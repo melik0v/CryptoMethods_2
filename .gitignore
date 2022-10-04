@@ -1,0 +1,16 @@
+/venv
+Crypto_Methods/build
+Crypto_Methods/dist
+Crypto_Methods/lab1
+Crypto_Methods_2/build
+Crypto_Methods_2/dist
+Crypto_Methods_2/lab1
+Crypto_Methods/*.spec
+Crypto_Methods/.idea
+Crypto_Methods/*.xml
+Crypto_Methods_2/*.spec
+Crypto_Methods_2/.idea
+Crypto_Methods_2/*.xml
+/*.spec
+/.idea
+/*.xml
