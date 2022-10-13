@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>685</width>
+    <width>1000</width>
     <height>520</height>
    </rect>
   </property>
@@ -24,26 +24,23 @@
   </property>
   <property name="maximumSize">
    <size>
-    <width>685</width>
+    <width>1000</width>
     <height>650</height>
    </size>
   </property>
   <property name="windowTitle">
-   <string>RSA</string>
-  </property>
-  <property name="styleSheet">
-   <string notr="true">background-color: rgb(0, 0, 0);</string>
+   <string>Shamir</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <property name="styleSheet">
-    <string notr="true">background-color: rgb(0, 0,0);</string>
+    <string notr="true">background-color: #000</string>
    </property>
    <widget class="QLabel" name="label_9">
     <property name="geometry">
      <rect>
-      <x>460</x>
+      <x>702</x>
       <y>50</y>
-      <width>151</width>
+      <width>41</width>
       <height>30</height>
      </rect>
     </property>
@@ -62,7 +59,7 @@ font: 14pt &quot;Century Gothic&quot;;
 font-weight: 700;</string>
     </property>
     <property name="text">
-     <string>ШИФРОТЕКСТ</string>
+     <string>Боб</string>
     </property>
    </widget>
    <widget class="QFrame" name="frame">
@@ -70,7 +67,7 @@ font-weight: 700;</string>
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>701</width>
+      <width>1001</width>
       <height>41</height>
      </rect>
     </property>
@@ -88,11 +85,11 @@ font-weight: 700;</string>
       <rect>
        <x>0</x>
        <y>0</y>
-       <width>691</width>
+       <width>1001</width>
        <height>41</height>
       </rect>
      </property>
-     <layout class="QHBoxLayout" name="horizontalLayout_3">
+     <layout class="QHBoxLayout" name="horizontalLayout_3" stretch="0,0,0">
       <item>
        <spacer name="horizontalSpacer_2">
         <property name="orientation">
@@ -114,7 +111,7 @@ font: 18pt &quot;Century Gothic&quot;;
 font-weight: 700;</string>
         </property>
         <property name="text">
-         <string>RSA</string>
+         <string>Шамир</string>
         </property>
        </widget>
       </item>
@@ -137,9 +134,9 @@ font-weight: 700;</string>
    <widget class="QLabel" name="label_8">
     <property name="geometry">
      <rect>
-      <x>130</x>
+      <x>220</x>
       <y>50</y>
-      <width>61</width>
+      <width>71</width>
       <height>30</height>
      </rect>
     </property>
@@ -158,13 +155,13 @@ font: 14pt &quot;Century Gothic&quot;;
 font-weight: 700;</string>
     </property>
     <property name="text">
-     <string>ТЕКСТ</string>
+     <string>Алиса</string>
     </property>
    </widget>
-   <widget class="QTextBrowser" name="textBrowser_encrypted">
+   <widget class="QTextBrowser" name="text_browser">
     <property name="geometry">
      <rect>
-      <x>380</x>
+      <x>690</x>
       <y>80</y>
       <width>290</width>
       <height>120</height>
@@ -181,7 +178,7 @@ color: white;
    <widget class="QPlainTextEdit" name="text_edit">
     <property name="geometry">
      <rect>
-      <x>20</x>
+      <x>200</x>
       <y>80</y>
       <width>290</width>
       <height>120</height>
@@ -194,125 +191,24 @@ border-radius: 10px;
 color: white;
 </string>
     </property>
-   </widget>
-   <widget class="QLabel" name="input_path">
-    <property name="geometry">
-     <rect>
-      <x>180</x>
-      <y>470</y>
-      <width>141</width>
-      <height>30</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">color: white;
-font: 14pt &quot;Century Gothic&quot;;
-font-weight: 700;
-text-transform: uppercase;
-</string>
-    </property>
-    <property name="text">
-     <string>NO INPUT FILE</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="input_file_btn">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>470</y>
-      <width>151</width>
-      <height>30</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Century Gothic</family>
-      <pointsize>8</pointsize>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QPushButton {
-	color: black;
-	background-color: grey;
-	border-radius: 7px;
-}
-
-QPushButton:pressed {
-	background-color: rgb(102, 102, 102);
-}</string>
-    </property>
-    <property name="text">
-     <string>Входной файл</string>
+    <property name="readOnly">
+     <bool>false</bool>
     </property>
    </widget>
    <widget class="QWidget" name="horizontalLayoutWidget">
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>210</y>
-      <width>651</width>
-      <height>214</height>
+      <y>260</y>
+      <width>961</width>
+      <height>154</height>
      </rect>
     </property>
-    <layout class="QHBoxLayout" name="horizontalLayout">
+    <layout class="QHBoxLayout" name="horizontalLayout" stretch="2,0,2">
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="1,5">
        <item>
         <layout class="QVBoxLayout" name="verticalLayout_2">
-         <item>
-          <widget class="QLabel" name="label_key_size">
-           <property name="font">
-            <font>
-             <family>Century Gothic</family>
-             <pointsize>14</pointsize>
-             <weight>75</weight>
-             <bold>true</bold>
-            </font>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">color: white;</string>
-           </property>
-           <property name="text">
-            <string>Размер ключа</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLabel" name="label_p">
-           <property name="font">
-            <font>
-             <family>Century Gothic</family>
-             <pointsize>14</pointsize>
-             <weight>75</weight>
-             <bold>true</bold>
-            </font>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">color: white;</string>
-           </property>
-           <property name="text">
-            <string>P</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLabel" name="label_q">
-           <property name="font">
-            <font>
-             <family>Century Gothic</family>
-             <pointsize>14</pointsize>
-             <weight>75</weight>
-             <bold>true</bold>
-            </font>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">color: white;</string>
-           </property>
-           <property name="text">
-            <string>Q</string>
-           </property>
-          </widget>
-         </item>
          <item>
           <widget class="QLabel" name="label_public_key">
            <property name="font">
@@ -327,7 +223,7 @@ QPushButton:pressed {
             <string notr="true">color: white;</string>
            </property>
            <property name="text">
-            <string>Открытый ключ</string>
+            <string>C</string>
            </property>
           </widget>
          </item>
@@ -345,12 +241,12 @@ QPushButton:pressed {
             <string notr="true">color: white;</string>
            </property>
            <property name="text">
-            <string>Секретный ключ</string>
+            <string>D</string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QLabel" name="label_n">
+          <widget class="QLabel" name="label_x1">
            <property name="font">
             <font>
              <family>Century Gothic</family>
@@ -363,7 +259,25 @@ QPushButton:pressed {
             <string notr="true">color: white;</string>
            </property>
            <property name="text">
-            <string>N</string>
+            <string>X1</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_x3">
+           <property name="font">
+            <font>
+             <family>Century Gothic</family>
+             <pointsize>14</pointsize>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">color: white;</string>
+           </property>
+           <property name="text">
+            <string>X3</string>
            </property>
           </widget>
          </item>
@@ -378,65 +292,6 @@ QPushButton:pressed {
           <number>0</number>
          </property>
          <item>
-          <widget class="QSpinBox" name="spinBox_key_len">
-           <property name="font">
-            <font>
-             <family>Century Gothic</family>
-             <pointsize>14</pointsize>
-            </font>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">color: white;</string>
-           </property>
-           <property name="minimum">
-            <number>9</number>
-           </property>
-           <property name="maximum">
-            <number>9999</number>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLineEdit" name="lineEdit_p">
-           <property name="enabled">
-            <bool>true</bool>
-           </property>
-           <property name="font">
-            <font>
-             <family>Century Gothic</family>
-             <pointsize>10</pointsize>
-            </font>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">border: 1px solid #ccc;
-color: white;</string>
-           </property>
-           <property name="readOnly">
-            <bool>false</bool>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLineEdit" name="lineEdit_q">
-           <property name="enabled">
-            <bool>true</bool>
-           </property>
-           <property name="font">
-            <font>
-             <family>Century Gothic</family>
-             <pointsize>10</pointsize>
-            </font>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">border: 1px solid #ccc;
-color: white;</string>
-           </property>
-           <property name="readOnly">
-            <bool>false</bool>
-           </property>
-          </widget>
-         </item>
-         <item>
           <widget class="QLineEdit" name="lineEdit_public_key">
            <property name="enabled">
             <bool>true</bool>
@@ -450,9 +305,6 @@ color: white;</string>
            <property name="styleSheet">
             <string notr="true">border: 1px solid #ccc;
 color: white;</string>
-           </property>
-           <property name="readOnly">
-            <bool>true</bool>
            </property>
           </widget>
          </item>
@@ -471,13 +323,10 @@ color: white;</string>
             <string notr="true">border: 1px solid #ccc;
 color: white;</string>
            </property>
-           <property name="readOnly">
-            <bool>true</bool>
-           </property>
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="lineEdit_n">
+          <widget class="QLineEdit" name="lineEdit_x1">
            <property name="enabled">
             <bool>true</bool>
            </property>
@@ -491,8 +340,22 @@ color: white;</string>
             <string notr="true">border: 1px solid #ccc;
 color: white;</string>
            </property>
-           <property name="readOnly">
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="lineEdit_x3">
+           <property name="enabled">
             <bool>true</bool>
+           </property>
+           <property name="font">
+            <font>
+             <family>Century Gothic</family>
+             <pointsize>10</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">border: 1px solid #ccc;
+color: white;</string>
            </property>
           </widget>
          </item>
@@ -501,80 +364,184 @@ color: white;</string>
       </layout>
      </item>
      <item>
-      <layout class="QVBoxLayout" name="verticalLayout">
+      <spacer name="horizontalSpacer_3">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_4" stretch="1,5">
        <item>
-        <widget class="QPushButton" name="encrypt_btn">
-         <property name="font">
-          <font>
-           <family>Century Gothic</family>
-          </font>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">QPushButton {
-	color: black;
-	background-color: grey;
-	border-radius: 7px;
-	height: 30px;
-	padding: 0px 7px;
-}
-
-QPushButton:pressed {
-	background-color: rgb(102, 102, 102);
-}</string>
-         </property>
-         <property name="text">
-          <string>Зашифровать</string>
-         </property>
-        </widget>
+        <layout class="QVBoxLayout" name="verticalLayout_4">
+         <item>
+          <widget class="QLabel" name="label_public_key_2">
+           <property name="font">
+            <font>
+             <family>Century Gothic</family>
+             <pointsize>14</pointsize>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">color: white;</string>
+           </property>
+           <property name="text">
+            <string>C</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_private_key_2">
+           <property name="font">
+            <font>
+             <family>Century Gothic</family>
+             <pointsize>14</pointsize>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">color: white;</string>
+           </property>
+           <property name="text">
+            <string>D</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_x2">
+           <property name="font">
+            <font>
+             <family>Century Gothic</family>
+             <pointsize>14</pointsize>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">color: white;</string>
+           </property>
+           <property name="text">
+            <string>X2</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_x4">
+           <property name="font">
+            <font>
+             <family>Century Gothic</family>
+             <pointsize>14</pointsize>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">color: white;</string>
+           </property>
+           <property name="text">
+            <string>X4</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </item>
        <item>
-        <widget class="QPushButton" name="decrypt_btn">
-         <property name="font">
-          <font>
-           <family>Century Gothic</family>
-          </font>
+        <layout class="QVBoxLayout" name="verticalLayout_5">
+         <property name="spacing">
+          <number>12</number>
          </property>
-         <property name="styleSheet">
-          <string notr="true">QPushButton {
-	color: black;
-	background-color: grey;
-	border-radius: 7px;
-	height: 30px;
-	padding: 0px 7px;
-}
-
-QPushButton:pressed {
-	background-color: rgb(102, 102, 102);
-}</string>
+         <property name="bottomMargin">
+          <number>0</number>
          </property>
-         <property name="text">
-          <string>Расшифровать</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <spacer name="verticalSpacer">
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>20</width>
-           <height>40</height>
-          </size>
-         </property>
-        </spacer>
+         <item>
+          <widget class="QLineEdit" name="lineEdit_public_key_2">
+           <property name="enabled">
+            <bool>true</bool>
+           </property>
+           <property name="font">
+            <font>
+             <family>Century Gothic</family>
+             <pointsize>10</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">border: 1px solid #ccc;
+color: white;</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="lineEdit_private_key_2">
+           <property name="enabled">
+            <bool>true</bool>
+           </property>
+           <property name="font">
+            <font>
+             <family>Century Gothic</family>
+             <pointsize>10</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">border: 1px solid #ccc;
+color: white;</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="lineEdit_x2">
+           <property name="enabled">
+            <bool>true</bool>
+           </property>
+           <property name="font">
+            <font>
+             <family>Century Gothic</family>
+             <pointsize>10</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">border: 1px solid #ccc;
+color: white;</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="lineEdit_x4">
+           <property name="enabled">
+            <bool>true</bool>
+           </property>
+           <property name="font">
+            <font>
+             <family>Century Gothic</family>
+             <pointsize>10</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">border: 1px solid #ccc;
+color: white;</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </item>
       </layout>
      </item>
     </layout>
    </widget>
-   <widget class="QPushButton" name="gen_p_q_btn">
+   <widget class="QPushButton" name="gen_btn">
     <property name="geometry">
      <rect>
       <x>20</x>
       <y>430</y>
-      <width>151</width>
+      <width>161</width>
       <height>30</height>
      </rect>
     </property>
@@ -596,16 +563,16 @@ QPushButton:pressed {
 }</string>
     </property>
     <property name="text">
-     <string>Сгенерировать P и Q</string>
+     <string>Сгенерировать ключи</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="gen_keys_btn">
+   <widget class="QPushButton" name="post_btn">
     <property name="geometry">
      <rect>
-      <x>180</x>
-      <y>430</y>
-      <width>151</width>
-      <height>30</height>
+      <x>20</x>
+      <y>120</y>
+      <width>161</width>
+      <height>31</height>
      </rect>
     </property>
     <property name="font">
@@ -626,7 +593,130 @@ QPushButton:pressed {
 }</string>
     </property>
     <property name="text">
-     <string>Вычислить ключи</string>
+     <string>Передать сообщение</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_key_size">
+    <property name="geometry">
+     <rect>
+      <x>290</x>
+      <y>430</y>
+      <width>178</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Century Gothic</family>
+      <pointsize>14</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: white;</string>
+    </property>
+    <property name="text">
+     <string>Размер ключа</string>
+    </property>
+   </widget>
+   <widget class="QSpinBox" name="key_size_spinBox">
+    <property name="geometry">
+     <rect>
+      <x>470</x>
+      <y>430</y>
+      <width>91</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Century Gothic</family>
+      <pointsize>14</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: white;</string>
+    </property>
+    <property name="minimum">
+     <number>16</number>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEdit_p">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>200</x>
+      <y>214</y>
+      <width>651</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Century Gothic</family>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border: 1px solid #ccc;
+color: white;</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_p">
+    <property name="geometry">
+     <rect>
+      <x>170</x>
+      <y>214</y>
+      <width>21</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Century Gothic</family>
+      <pointsize>14</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: white;</string>
+    </property>
+    <property name="text">
+     <string>P</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="p_gen_btn">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>210</y>
+      <width>120</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Century Gothic</family>
+      <pointsize>8</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+	color: black;
+	background-color: grey;
+	border-radius: 7px;
+}
+
+QPushButton:pressed {
+	background-color: rgb(102, 102, 102);
+}</string>
+    </property>
+    <property name="text">
+     <string>Сгенерировать P</string>
     </property>
    </widget>
   </widget>

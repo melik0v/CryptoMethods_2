@@ -43,6 +43,28 @@ def gcd_ext(a: int, b: int) -> GCDExt:
     return result
 
 
+def sdm(modulo: int, count: int) -> tuple:
+    """
+    Square detection modulo.
+
+    :param modulo: Modulo.
+    :param count: Count of square detections.
+    :return: List of first count square detections.
+    """
+    result = []
+    for i in range(2, modulo):
+        if gcd_ext(i, modulo).gcd == 1 and pow(i, (modulo - 1 // 2)):
+            result.append(i)
+        if len(result) == count:
+            break
+
+    return tuple(result)
+
+
+def sqrt_mod(element, modulo):
+    pass
+
+
 def split(lst, n):
     for i in range(0, len(lst), n):
         yield lst[i:i + n]

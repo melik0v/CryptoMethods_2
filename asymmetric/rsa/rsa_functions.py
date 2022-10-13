@@ -4,7 +4,6 @@ import math
 from tools.utils import (
     gcd_ext,
     gen_prime_num,
-    pow_mod,
     mod_inv,
     split
 )
@@ -22,7 +21,7 @@ class RSA:
         d: int
         n: int
 
-    def __init__(self, public_key: PublicKey, private_key: PrivateKey) -> None:
+    def __init__(self, public_key: PublicKey = None, private_key: PrivateKey = None) -> None:
         """
         Implementation of the asymmetric RSA encryption algorithm.
         private_key
@@ -30,53 +29,53 @@ class RSA:
         public_key
             Public key of type RSA.PublicKey, which contains the number E and the modulus N.
         """
-        if not (isinstance(public_key, RSA.PublicKey) and isinstance(private_key, RSA.PrivateKey)):
+        if not (public_key and private_key):
+            public_key = None
+            private_key = None
+        elif not (isinstance(public_key, RSA.PublicKey) and isinstance(private_key, RSA.PrivateKey)):
             raise TypeError("Wrong type of arguments (must be RSA.PublicKey and RSA.PrivateKey")
 
         self.public_key = public_key
         self.private_key = private_key
 
     def encrypt(self, data: bytes):
-        r = self.public_key.n.bit_length() >> 3
-        data = split(data, self.public_key.n.bit_length() >> 3)
+        data = split(data, (self.public_key.n.bit_length() >> 3) - 1)
         result = []
-        for unit in data:
-            tmp = int.from_bytes(unit, "little")
-            a = tmp.bit_length()
-            encrypted_data = pow_mod(tmp, self.public_key.e, self.public_key.n)
-            b = encrypted_data.bit_length()
-            c = math.ceil(encrypted_data.bit_length() / 8)
+        for index, unit in enumerate(data):
+            tmp = int.from_bytes(unit, "big")
+            encrypted_data = pow(tmp, self.public_key.e, self.public_key.n)
+            encrypted_bytes = encrypted_data.to_bytes(math.ceil(encrypted_data.bit_length() / 8), "big")
+            delta = math.ceil(self.public_key.n.bit_length() / 8) - len(encrypted_bytes)
+            if delta > 0 or not encrypted_bytes:
+                encrypted_bytes = b'\x00' * delta + encrypted_bytes
 
-            # result.append(encrypted_data.to_bytes(math.ceil(encrypted_data.bit_length() / 8), "little"))
+            result.append(encrypted_bytes)
 
-            result.append(encrypted_data)
-            # result.append(encrypted_data.to_bytes(encrypted_data.bit_length() >> 3, "little"))
-            # result += encrypted_data.to_bytes(math.ceil(encrypted_data.bit_length() / 8), "little")
-        return result
+        return bytearray().join(result)
 
-    def decrypt(self, data: list) -> bytearray:
-        # data = split(data, self.public_key.n.bit_length() >> 3)
+    def decrypt(self, data: bytearray or bytes) -> bytearray:
+        block_len = math.ceil(self.public_key.n.bit_length() / 8)
+        length = math.ceil(len(data) / block_len)
+        data = split(data, block_len)
         result = []
-        for unit in data:
-            # tmp = int.from_bytes(unit, "little")
-            decrypted_data = pow_mod(unit, self.private_key.d, self.private_key.n)
-            # a = tmp.bit_length()
-            # result = decrypted_data.to_bytes(math.ceil(decrypted_data.bit_length() / 8), "little")
-            b = decrypted_data.bit_length()
+        for index, unit in enumerate(data):
+            tmp = int.from_bytes(unit, "big")
+            decrypted_data = pow(tmp, self.private_key.d, self.private_key.n)
+            decrypted_bytes = decrypted_data.to_bytes(math.ceil(decrypted_data.bit_length() / 8), "big")
+            delta = ((self.public_key.n.bit_length() >> 3) - 1) - len(decrypted_bytes)
 
-            # result.append(decrypted_data.to_bytes(math.ceil(decrypted_data.bit_length() / 8), "little"))
+            if delta > 0 and index != length - 1:
+                decrypted_bytes = b'\x00' * delta + decrypted_bytes
+            result.append(decrypted_bytes)
 
-            result.append(decrypted_data)
-            # result.append(decrypted_data.to_bytes(decrypted_data.bit_length() >> 3, "little"))
-        # for substr in result:
-        #     substr.replace(b'\x00', b'')
-        # return bytearray().join(result)
-        return result
+        return bytearray().join(result)
 
     @staticmethod
     def key_gen(key_size: int = 1024, p: int = None, q: int = None):
         """
-        Generate public and private keys
+        Generate public and private keys. If both p and q parameters are filled, the "key_size" parameter is ignored,
+        otherwise p and q are generated automatically.
+
         :param key_size: Number of bits to generate P and Q
         :param p: Prime number to generate keys
         :param q: Prime number to generate keys
@@ -84,12 +83,12 @@ class RSA:
         """
         if not (p and q):
             p = gen_prime_num(key_size)
-            a = p.bit_length()
             q = gen_prime_num(key_size)
-            b = q.bit_length()
         n = p * q
-        c = n.bit_length()
-        phi = (p - 1) * (q - 1)
+        if p != q:
+            phi = (p - 1) * (q - 1)
+        else:
+            phi = n - p
         while True:
             e = random.randint(2, phi)
             if gcd_ext(e, phi).gcd == 1:
@@ -100,23 +99,14 @@ class RSA:
         return RSA.PublicKey(e, n), RSA.PrivateKey(d, n)
 
 
-msg = "Привет, мир! Как твои дела? Отведай еще этих нежных французских булок да выпей чаю! test strока Мир, привет!"
-keys = RSA.key_gen(256)
-obj = RSA(*keys)
-msg_bytes = bytes(msg, encoding="UTF-8")
-print(obj.public_key.n.bit_length() >> 3)
-print([int.from_bytes(_, "little").bit_length() for _ in split(msg_bytes, obj.public_key.n.bit_length() >> 3)])
-print([int.from_bytes(_, "little") for _ in split(msg_bytes, obj.public_key.n.bit_length() >> 3)])
-enc_msg = RSA.encrypt(obj, msg_bytes)
+with open("Шаблон уведомления.docx", "rb") as file:
+    msg = file.read()
 
-print("msg =", msg)
-print(len(msg.encode()))
-print("msg_bytes =", msg_bytes)
-print("Encrypted")
-print(enc_msg)
-print("Decrypted")
-dec_msg = RSA.decrypt(obj, enc_msg)
-print(dec_msg)
-print([_.bit_length() for _ in dec_msg])
-# dec_msg = dec_msg.decode(encoding="UTF-8", errors="replace")
-# print(dec_msg)
+keys = RSA.key_gen(384)
+obj = RSA(*keys)
+
+enc_msg = obj.encrypt(msg)
+dec_msg = obj.decrypt(enc_msg)
+
+with open("Decrypted.docx", "wb") as file:
+    file.write(dec_msg)
