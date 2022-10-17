@@ -50,7 +50,7 @@ class Shamir:
         else:
             block_size_add = 0
 
-        block_size = ceil(self.public_key.p.bit_length() / 8) + block_size_add
+        block_size = ceil(self.public_key.p.bit_length() // 8) + block_size_add
         data = split(data, block_size - 1)
         result = []
         for index, block in enumerate(data):

@@ -102,10 +102,6 @@ class ElGamal:
             decrypted = (b * tmp) % self.public_key.p
             decrypted_bytes = decrypted.to_bytes(block_size, "little")[:-1]
 
-            # delta = block_size - len(decrypted_bytes)
-            # if delta > 0 or not decrypted_bytes:
-            #     decrypted_bytes = b'\x00' * delta + decrypted_bytes
-
             result.append(decrypted_bytes)
         return bytearray().join(result)[:length]
 

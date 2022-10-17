@@ -66,17 +66,23 @@ class Make(QMainWindow, Ui_MainWindow):
 
     def _gen_p_btn_clicked(self):
         size = self.key_size_spinBox.value()
+        if size % 8 != 0:
+            QMessageBox.warning(self.widget, "Warning", "Key length must be multiple of 8")
+            return
         p = gen_prime_num(size)
         g = primitive_root(p)
         self.lineEdit_p.setText(str(p))
         self.lineEdit_g.setText(str(g))
 
     def _encrypt_btn_clicked(self):
+        if not (self.bob.public_key and self.alice.public_key):
+            QMessageBox.warning(self.widget, "Warning", "Keys are undefined!")
+            return
         if self.input_file_path:
             with open(self.input_file_path, "rb") as file:
                 data = file.read()
                 filename = path.basename(self.input_file_path)
-                filename, extention = path.splitext(filename)
+                filename, extension = path.splitext(filename)
 
             encrypted_data = self.alice.encrypt(data, self.bob.public_key)
 
@@ -96,7 +102,7 @@ class Make(QMainWindow, Ui_MainWindow):
             with open(self.input_file_path, "rb") as file:
                 data = file.read()
                 filename = path.basename(self.input_file_path)
-                filename, extention = path.splitext(filename)
+                filename, extension = path.splitext(filename)
 
             decrypted_data = self.bob.decrypt(data)
 

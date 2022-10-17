@@ -1,7 +1,8 @@
 from dataclasses import dataclass
 from tools.utils import (
     gen_prime_num,
-    sdm
+    sdm,
+    sqrt_mod
 )
 from typing import NamedTuple
 
@@ -24,12 +25,15 @@ class Make:
     @staticmethod
     def key_gen(count: int = 10, p: int = None, q: int = None) -> (PublicKey, PrivateKey):
         if not (p and q):
-            p = gen_prime_num()
-            q = gen_prime_num()
+            p = gen_prime_num(16)
+            q = gen_prime_num(16)
         n = p * q
         v_list = sdm(n, count)
+        s_list = []
+        for v in v_list:
+            s_list.append(sqrt_mod(v, n))
 
-        return Keys(Make.PublicKey(v_list, n), Make.PrivateKey())
+        return Keys(Make.PublicKey(v_list, n), Make.PrivateKey(tuple(s_list)))
 
 
 print(Make.key_gen())

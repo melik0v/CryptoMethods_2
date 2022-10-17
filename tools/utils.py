@@ -1,6 +1,7 @@
 import time
 import math
 import gmpy2
+import sympy
 from . import pyecm
 import random
 from typing import NamedTuple
@@ -23,7 +24,8 @@ def gcd_ext(a: int, b: int) -> GCDExt:
     """
     s0, s1 = 1, 0
     t0, t1 = 0, 1
-
+    a = gmpy2.mpz(a)
+    b = gmpy2.mpz(b)
     is_swapped = False
     if a < b:
         a, b = b, a
@@ -36,9 +38,9 @@ def gcd_ext(a: int, b: int) -> GCDExt:
         t0, t1 = t1, t0 - t1 * q
 
     if is_swapped:
-        result = GCDExt(a, t0, s0)
+        result = GCDExt(int(a), int(t0), int(s0))
     else:
-        result = GCDExt(a, s0, t0)
+        result = GCDExt(int(a), int(s0), int(t0))
 
     return result
 
@@ -53,7 +55,7 @@ def sdm(modulo: int, count: int) -> tuple:
     """
     result = []
     for i in range(2, modulo):
-        if gcd_ext(i, modulo).gcd == 1 and pow(i, (modulo - 1 // 2)):
+        if gcd_ext(i, modulo).gcd == 1 and pow(i, ((modulo - 1) // 2), modulo) == 1:
             result.append(i)
         if len(result) == count:
             break
@@ -61,8 +63,55 @@ def sdm(modulo: int, count: int) -> tuple:
     return tuple(result)
 
 
-def sqrt_mod(element, modulo):
-    pass
+def sqrt_mod(a: gmpy2.mpz, p: gmpy2.mpz) -> gmpy2.mpz:
+    """The function for calculating the square root modulo a prime number is Tonelli-Shanks algorithm.
+    For comparisons like x^2 = a (mod p)
+    :param a: quadratic residue.
+    :param p: prime number (p > 2).
+    :return: x satisfying the comparison.
+    """
+    if sympy.legendre_symbol(a, p) != 1:
+        return gmpy2.mpz()
+    elif a == 0:
+        return gmpy2.mpz()
+    elif p == 2:
+        return gmpy2.mpz()
+    elif p % 4 == 3:
+        return gmpy2.powmod(a, (p + 1) >> 2, p)
+
+    s = p - 1
+    e = gmpy2.mpz()
+    while s % 2 == 0:
+        s >>= 1
+        e += 1
+
+    n = 2
+    while sympy.legendre_symbol(n, p) != -1:
+        n += 1
+
+    x = gmpy2.powmod(a, (s + 1) >> 1, p)
+    b = gmpy2.powmod(a, s, p)
+    g = gmpy2.powmod(n, s, p)
+    r = e
+
+    while True:
+        t = b
+        m = 0
+
+        for m in range(r):
+            if t == 1:
+                break
+
+            t = gmpy2.powmod(t, 2, p)
+
+        if m == 0:
+            return x
+
+        gs = gmpy2.powmod(g, 2 ** (r - m - 1), p)
+        g = (gs * gs) % p
+        x = (x * gs) % p
+        b = (b * g) % p
+        r = m
 
 
 def split(lst, n):
@@ -253,3 +302,4 @@ def primitive_root(module: int) -> int:
 
         if flag and gmpy2.gcd(root, module) == 1:
             return root
+

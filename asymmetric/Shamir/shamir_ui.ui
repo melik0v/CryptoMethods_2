@@ -664,6 +664,9 @@ QPushButton:pressed {
      <string notr="true">border: 1px solid #ccc;
 color: white;</string>
     </property>
+    <property name="readOnly">
+     <bool>true</bool>
+    </property>
    </widget>
    <widget class="QLabel" name="label_p">
     <property name="geometry">

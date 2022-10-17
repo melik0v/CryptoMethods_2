@@ -32,11 +32,18 @@ class Make(QMainWindow, Ui_MainWindow):
 
     def _gen_p_btn_clicked(self):
         size = self.key_size_spinBox.value()
+        if size % 8 != 0:
+            QMessageBox.warning(self.widget, "Warning", "Key length must be multiple of 8")
+            return
         p = gen_prime_num(size)
         self.lineEdit_p.setText(str(p))
 
     def _gen_keys_btn_clicked(self):
-        p = int(self.lineEdit_p.text())
+        try:
+            p = int(self.lineEdit_p.text())
+        except ValueError:
+            QMessageBox.warning(self.widget, "Warning", "P must be a prime number")
+            return
         a_keys = Shamir.keys_gen(p=p)
         b_keys = Shamir.keys_gen(p=p)
         self.alice = Shamir(*a_keys)

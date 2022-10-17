@@ -141,6 +141,7 @@ class Ui_MainWindow(object):
         self.lineEdit_public_key.setFont(font)
         self.lineEdit_public_key.setStyleSheet("border: 1px solid #ccc;\n"
 "color: white;")
+        self.lineEdit_public_key.setReadOnly(True)
         self.lineEdit_public_key.setObjectName("lineEdit_public_key")
         self.verticalLayout_3.addWidget(self.lineEdit_public_key)
         self.lineEdit_private_key = QtWidgets.QLineEdit(self.horizontalLayoutWidget)
@@ -151,6 +152,7 @@ class Ui_MainWindow(object):
         self.lineEdit_private_key.setFont(font)
         self.lineEdit_private_key.setStyleSheet("border: 1px solid #ccc;\n"
 "color: white;")
+        self.lineEdit_private_key.setReadOnly(True)
         self.lineEdit_private_key.setObjectName("lineEdit_private_key")
         self.verticalLayout_3.addWidget(self.lineEdit_private_key)
         self.lineEdit_session_key = QtWidgets.QLineEdit(self.horizontalLayoutWidget)
@@ -161,6 +163,7 @@ class Ui_MainWindow(object):
         self.lineEdit_session_key.setFont(font)
         self.lineEdit_session_key.setStyleSheet("border: 1px solid #ccc;\n"
 "color: white;")
+        self.lineEdit_session_key.setReadOnly(True)
         self.lineEdit_session_key.setObjectName("lineEdit_session_key")
         self.verticalLayout_3.addWidget(self.lineEdit_session_key)
         self.horizontalLayout_2.addLayout(self.verticalLayout_3)
@@ -217,6 +220,7 @@ class Ui_MainWindow(object):
         self.lineEdit_public_key_2.setFont(font)
         self.lineEdit_public_key_2.setStyleSheet("border: 1px solid #ccc;\n"
 "color: white;")
+        self.lineEdit_public_key_2.setReadOnly(True)
         self.lineEdit_public_key_2.setObjectName("lineEdit_public_key_2")
         self.verticalLayout_5.addWidget(self.lineEdit_public_key_2)
         self.lineEdit_private_key_2 = QtWidgets.QLineEdit(self.horizontalLayoutWidget)
@@ -227,6 +231,7 @@ class Ui_MainWindow(object):
         self.lineEdit_private_key_2.setFont(font)
         self.lineEdit_private_key_2.setStyleSheet("border: 1px solid #ccc;\n"
 "color: white;")
+        self.lineEdit_private_key_2.setReadOnly(True)
         self.lineEdit_private_key_2.setObjectName("lineEdit_private_key_2")
         self.verticalLayout_5.addWidget(self.lineEdit_private_key_2)
         self.lineEdit_session_key_2 = QtWidgets.QLineEdit(self.horizontalLayoutWidget)
@@ -237,6 +242,7 @@ class Ui_MainWindow(object):
         self.lineEdit_session_key_2.setFont(font)
         self.lineEdit_session_key_2.setStyleSheet("border: 1px solid #ccc;\n"
 "color: white;")
+        self.lineEdit_session_key_2.setReadOnly(True)
         self.lineEdit_session_key_2.setObjectName("lineEdit_session_key_2")
         self.verticalLayout_5.addWidget(self.lineEdit_session_key_2)
         self.horizontalLayout_4.addLayout(self.verticalLayout_5)
@@ -303,6 +309,7 @@ class Ui_MainWindow(object):
         self.lineEdit_g.setFont(font)
         self.lineEdit_g.setStyleSheet("border: 1px solid #ccc;\n"
 "color: white;")
+        self.lineEdit_g.setReadOnly(True)
         self.lineEdit_g.setObjectName("lineEdit_g")
         self.label_g = QtWidgets.QLabel(self.centralwidget)
         self.label_g.setGeometry(QtCore.QRect(150, 253, 21, 37))
@@ -323,6 +330,7 @@ class Ui_MainWindow(object):
         self.lineEdit_p.setFont(font)
         self.lineEdit_p.setStyleSheet("border: 1px solid #ccc;\n"
 "color: white;")
+        self.lineEdit_p.setReadOnly(True)
         self.lineEdit_p.setObjectName("lineEdit_p")
         self.label_p = QtWidgets.QLabel(self.centralwidget)
         self.label_p.setGeometry(QtCore.QRect(150, 210, 21, 37))
