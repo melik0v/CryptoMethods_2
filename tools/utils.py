@@ -3,6 +3,7 @@ import math
 import gmpy2
 import sympy
 from . import pyecm
+# import pyecm
 import random
 from typing import NamedTuple
 from typing import Union
@@ -302,4 +303,3 @@ def primitive_root(module: int) -> int:
 
         if flag and gmpy2.gcd(root, module) == 1:
             return root
-

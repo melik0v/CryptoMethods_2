@@ -99,14 +99,15 @@ class RSA:
         return RSA.PublicKey(e, n), RSA.PrivateKey(d, n)
 
 
-with open("Шаблон уведомления.docx", "rb") as file:
-    msg = file.read()
-
-keys = RSA.key_gen(384)
-obj = RSA(*keys)
-
-enc_msg = obj.encrypt(msg)
-dec_msg = obj.decrypt(enc_msg)
-
-with open("Decrypted.docx", "wb") as file:
-    file.write(dec_msg)
+# msg = "Привет, Мир!"
+# msg = bytes(msg, "UTF-8")
+# print(msg)
+# keys = RSA.key_gen(384)
+# obj = RSA(*keys)
+#
+# enc_msg = obj.encrypt(msg)
+# print(enc_msg)
+# dec_msg = obj.decrypt(enc_msg)
+# print(dec_msg)
+#
+# print(dec_msg.decode("UTF-8"))
