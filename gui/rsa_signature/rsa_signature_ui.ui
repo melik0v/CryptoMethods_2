@@ -1,0 +1,464 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>685</width>
+    <height>561</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>0</width>
+    <height>0</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>685</width>
+    <height>650</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>RSA Signature</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(0, 0, 0);</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(0, 0,0);</string>
+   </property>
+   <widget class="QFrame" name="frame">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>701</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(49, 80, 78)</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <widget class="QWidget" name="horizontalLayoutWidget">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>691</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_4">
+        <property name="styleSheet">
+         <string notr="true">color: white;
+font: 18pt &quot;Century Gothic&quot;;
+font-weight: 700;</string>
+        </property>
+        <property name="text">
+         <string>RSA Signature</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer_2">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+     </layout>
+    </widget>
+   </widget>
+   <widget class="QPushButton" name="sign_btn">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>250</y>
+      <width>130</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Century Gothic</family>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+	color: black;
+	background-color: grey;
+	border-radius: 7px;
+}
+
+QPushButton:pressed {
+	background-color: rgb(102, 102, 102);
+}</string>
+    </property>
+    <property name="text">
+     <string>Sign</string>
+    </property>
+   </widget>
+   <widget class="QWidget" name="horizontalLayoutWidget_2">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>120</y>
+      <width>691</width>
+      <height>116</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="1,100,1">
+     <item>
+      <spacer name="horizontalSpacer_4">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <layout class="QGridLayout" name="gridLayout" rowstretch="0,0" columnstretch="1,4,0">
+       <item row="0" column="0">
+        <widget class="QPushButton" name="InputFile_btn">
+         <property name="font">
+          <font>
+           <family>Century Gothic</family>
+           <pointsize>8</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton {
+	color: black;
+	background-color: grey;
+	border-radius: 7px;
+	padding: 5px;
+}
+
+QPushButton:pressed {
+	background-color: rgb(102, 102, 102);
+}</string>
+         </property>
+         <property name="text">
+          <string>Input file</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="hash_label">
+         <property name="styleSheet">
+          <string notr="true">color: white;
+font: 14pt &quot;Century Gothic&quot;;
+font-weight: 700;
+text-transform: uppercase;
+</string>
+         </property>
+         <property name="text">
+          <string>Sign</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QCheckBox" name="signed_checkBox">
+         <property name="styleSheet">
+          <string notr="true">color: white;
+font: 14pt &quot;Century Gothic&quot;;
+font-weight: 700;
+text-transform: uppercase;
+</string>
+         </property>
+         <property name="text">
+          <string>SIGNED</string>
+         </property>
+         <property name="checkable">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QLabel" name="input_path">
+         <property name="styleSheet">
+          <string notr="true">color: white;
+font: 14pt &quot;Century Gothic&quot;;
+font-weight: 700;
+text-transform: uppercase;
+</string>
+         </property>
+         <property name="text">
+          <string>NO INPUT FILE</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer_3">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="horizontalLayoutWidget_3">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>40</y>
+      <width>681</width>
+      <height>80</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout_3">
+     <item>
+      <widget class="QLabel" name="label_msg">
+       <property name="styleSheet">
+        <string notr="true">color: white;
+font: 14pt &quot;Century Gothic&quot;;
+font-weight: 700;
+text-transform: uppercase;
+</string>
+       </property>
+       <property name="text">
+        <string>MSG</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="lineEdit_msg">
+       <property name="font">
+        <font>
+         <family>Century Gothic</family>
+         <pointsize>14</pointsize>
+         <weight>50</weight>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: white;
+border: 1px solid #ccc;</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="horizontalLayoutWidget_4">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>390</y>
+      <width>691</width>
+      <height>116</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout_4" stretch="1,100,1">
+     <item>
+      <spacer name="horizontalSpacer_5">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <layout class="QGridLayout" name="gridLayout_2" rowstretch="0" columnstretch="1,10">
+       <item row="0" column="0">
+        <widget class="QLabel" name="hash_label_2">
+         <property name="styleSheet">
+          <string notr="true">color: white;
+font: 14pt &quot;Century Gothic&quot;;
+font-weight: 700;
+text-transform: uppercase;
+</string>
+         </property>
+         <property name="text">
+          <string>NEW HASH</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QPlainTextEdit" name="new_hash">
+         <property name="styleSheet">
+          <string notr="true">background-color: rgb(42, 42, 42);
+border: 1px solid gray;
+border-radius: 10px;
+color: white;
+</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer_6">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="horizontalLayoutWidget_5">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>310</y>
+      <width>681</width>
+      <height>80</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout_5">
+     <item>
+      <widget class="QLabel" name="received_hash_label">
+       <property name="styleSheet">
+        <string notr="true">color: white;
+font: 14pt &quot;Century Gothic&quot;;
+font-weight: 700;
+text-transform: uppercase;
+</string>
+       </property>
+       <property name="text">
+        <string>Received Hash</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="received_hash">
+       <property name="font">
+        <font>
+         <family>Century Gothic</family>
+         <pointsize>14</pointsize>
+         <weight>50</weight>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: white;
+border: 1px solid #ccc;</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QPushButton" name="check_sign_btn">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>520</y>
+      <width>130</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Century Gothic</family>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+	color: black;
+	background-color: grey;
+	border-radius: 7px;
+}
+
+QPushButton:pressed {
+	background-color: rgb(102, 102, 102);
+}</string>
+    </property>
+    <property name="text">
+     <string>Check sign</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="post_btn">
+    <property name="geometry">
+     <rect>
+      <x>160</x>
+      <y>250</y>
+      <width>130</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Century Gothic</family>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+	color: black;
+	background-color: grey;
+	border-radius: 7px;
+}
+
+QPushButton:pressed {
+	background-color: rgb(102, 102, 102);
+}</string>
+    </property>
+    <property name="text">
+     <string>Post</string>
+    </property>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

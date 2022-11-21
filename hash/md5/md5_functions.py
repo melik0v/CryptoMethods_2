@@ -13,6 +13,8 @@ class MD5:
             case 'file':
                 with open(data, 'rb') as file:
                     self.data.fromfile(file)
+            case 'bytes':
+                self.data.frombytes(data)
 
     def generate_hash(self):
         self.__append_padding()
@@ -62,7 +64,7 @@ class MD5:
 
     def __append_padding(self):
         """
-        Adding missing bit. The message is supplemented in such a way that its length becomes equal to 448 modulo 512.
+        Add missing bit. The message is supplemented in such a way that its length becomes equal to 448 modulo 512.
         Also add length of message (64-bit representation).
         msg = msg + padding + length
         """
@@ -72,9 +74,10 @@ class MD5:
         self.data += bitarray('1') + (448 - 1 - length % 512) * bitarray('0') + length_bits
 
 
-# msg = "hello"
-# obj = MD5(msg)
-# print(obj.generate_hash())
-#
-# obj = MD5("C://Users//PYCTAM//Desktop//CryptoMethods//asymmetric//rsa//РД АС.pdf", mode="file")
-# print(obj.generate_hash())
+if __name__ == "__main__":
+    msg = "Привет"
+    obj = MD5(msg)
+    print(obj.generate_hash())
+
+    # obj = MD5("C://Users//PYCTAM//Desktop//CryptoMethods//gui//rsa//РД АС.pdf", mode="file")
+    # print(obj.generate_hash())

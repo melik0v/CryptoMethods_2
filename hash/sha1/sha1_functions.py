@@ -12,6 +12,8 @@ class SHA1:
             case 'file':
                 with open(data, 'rb') as file:
                     self.data.fromfile(file)
+            case 'bytes':
+                self.data.frombytes(data)
 
     def generate_hash(self):
         self.__append_padding()
@@ -75,10 +77,15 @@ class SHA1:
         self.data += bitarray('1') + (448 - 1 - length % 512) * bitarray('0') + length_bits
 
 
-msg = "Hello, world! Привет, Мир!"
-a = SHA1(msg)
-a = a.generate_hash()
-print(a)
-print(a == "6243ba8289f18d6186179a9d62ef52c50854d154")
-a = SHA1("C://Users//PYCTAM//Desktop//CryptoMethods//asymmetric//rsa//РД АС.pdf", mode="file")
-print(a.generate_hash())
+if __name__ == "__main__":
+    msg = "В чащах юга жил бы цитрус? Да, но фальшивый экземпляр!"
+    a = SHA1(msg)
+    a = a.generate_hash()
+    print(a)
+    print(a == "6243ba8289f18d6186179a9d62ef52c50854d154")
+    a = SHA1("C://Users//PYCTAM//Desktop//CryptoMethods//gui//rsa//РД АС.pdf", mode="file")
+    print(a.generate_hash())
+
+    a = 512
+    print(a.to_bytes(10, byteorder="little"))
+    print(a.to_bytes(10, byteorder="big"))

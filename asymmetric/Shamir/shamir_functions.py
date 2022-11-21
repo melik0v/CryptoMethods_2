@@ -1,6 +1,7 @@
+import time
+
 from tools.utils import (
     pow_mod,
-    primitive_root,
     gen_prime_num,
     gcd_ext,
     mod_inv,

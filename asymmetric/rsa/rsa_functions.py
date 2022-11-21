@@ -38,7 +38,7 @@ class RSA:
         self.public_key = public_key
         self.private_key = private_key
 
-    def encrypt(self, data: bytes):
+    def encrypt(self, data: bytes) -> bytes:
         data = split(data, (self.public_key.n.bit_length() >> 3) - 1)
         result = []
         for index, unit in enumerate(data):
@@ -51,9 +51,9 @@ class RSA:
 
             result.append(encrypted_bytes)
 
-        return bytearray().join(result)
+        return bytes(bytearray().join(result))
 
-    def decrypt(self, data: bytearray or bytes) -> bytearray:
+    def decrypt(self, data: bytearray or bytes) -> bytes:
         block_len = math.ceil(self.public_key.n.bit_length() / 8)
         length = math.ceil(len(data) / block_len)
         data = split(data, block_len)
@@ -68,7 +68,7 @@ class RSA:
                 decrypted_bytes = b'\x00' * delta + decrypted_bytes
             result.append(decrypted_bytes)
 
-        return bytearray().join(result)
+        return bytes(bytearray().join(result))
 
     @staticmethod
     def key_gen(key_size: int = 1024, p: int = None, q: int = None):
