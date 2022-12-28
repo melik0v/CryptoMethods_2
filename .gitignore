@@ -16,7 +16,12 @@ Crypto_Methods_2/.idea
 Crypto_Methods_2/*.xml
 /*.spec
 /.idea
-/*.xml
+*/*.xml
+*/*.mp4
+*/*.pdf
+*/*.doc
+*/*.docx
+*/*.txt
 */__pycache__/*
 **/**/__pycache__/
 **/__pycache__/
